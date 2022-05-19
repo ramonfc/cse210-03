@@ -2,7 +2,7 @@ import random
 class Puzzle:
     """A word to be guessed. 
     
-    The responsibility of Puzzle is provide a word form a words list to be guessed
+    The responsibility of Puzzle is provide a word from a words list to be guessed
 
     Attributes:
         word_list (List(str)): list of possible words to guess.
