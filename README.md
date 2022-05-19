@@ -1,6 +1,6 @@
 # Jumper
 Experience the adventure of a lifetime! <i>Jumper</i> might seem easy but even the best get lost 
-from time to time. The rules are simple. The user guesses the correct letters to find the missing word and help the man with the 
+from time to time. The rules are simple. You, the player, guesses the correct letters to find the missing word and help the man with the 
 parachute fly away safely before it is too late! Be careful though...You only have so many tries before time runs out.
 
 ---
