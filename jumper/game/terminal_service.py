@@ -58,7 +58,7 @@ class TerminalService:
                 guess = user_input
                 repeat = False
             else:
-                print("Bad input. You need to choose a letter between A - Z. Please try again")
+                print("Bad input. You need to choose a letter between a - z. Please try again")
                 user_input = input(message)
                 repeat = True  
         return guess   
