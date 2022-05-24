@@ -51,12 +51,20 @@ class TerminalService:
         expected_range (str): regular expression corresponding to possible right options
         
         """
+        # message = message.lower()
         user_input = input(message)
+        user_input = user_input.lower()
+        
         repeat = True
         while repeat == True:
-            if re.match(expected_range, user_input) != None:   
-                guess = user_input
-                repeat = False
+            if re.match(expected_range, user_input) != None:
+                if len(user_input) == 1:  
+                   guess = user_input
+                   repeat = False
+                else:
+                    print("Oh no! You entered more than one character. Please try again. Remember only one letter at a time.")
+                    user_input = input(message)
+                    repeat = True
             else:
                 print("Bad input. You need to choose a letter between a - z. Please try again")
                 user_input = input(message)
