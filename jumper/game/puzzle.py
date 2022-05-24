@@ -1,4 +1,4 @@
-from man import Man
+from game.man import Man
 import random
 
 class Puzzle:
