@@ -1,5 +1,6 @@
 from game.puzzle import Puzzle
-from game.man import Man
+#remove the man import since we don't need it anymore
+#from game.man import Man
 from game.terminal_service import TerminalService
 
 class Director:
@@ -21,11 +22,10 @@ class Director:
         self (Director): an instance of Director.
         """
         self._is_playing = True
-        self._puzzle = Puzzle().get_word()
-        self._man = Man(self._puzzle)
+        self._puzzle = Puzzle()
+        #self._man = Man()
         self._terminal_service = TerminalService()
         self._user_letter = ""
-        
         
     def start_game(self):
         while self._is_playing:
@@ -33,60 +33,44 @@ class Director:
             self.updates()
             self.get_outputs()
             
-            
-            
-        
-        
     def get_inputs(self):
         self._terminal_service.write_text("")
-        for letter in self._man.get_blank_puzzle():
+        for letter in self._puzzle.get_blank_puzzle(): #change from _man to _puzzle
             self._terminal_service.write_text(letter, end= " ")
 
         self._terminal_service.write_text("")
-        self._terminal_service.write_text(self._man.parachute()) #shows the parachute
+        self._terminal_service.write_text(self._puzzle._man.parachute()) #shows the parachute
         
         self._terminal_service.write_text("") #add newline that is blank
         self._user_letter= self._terminal_service.validateInput("Guess a letter [a-z]: ", "[a-z]") #gets user's letter 
         self._terminal_service.write_text(f"your input: {self._user_letter}") #displays the user's letter
-        
-        
-        
+                
     def updates(self):
-        self._man.check_guess(self._user_letter)
+        self._puzzle.check_guess(self._user_letter)
 
-       
-        
     def get_outputs(self):
-        print(self._man.parachute())
-        continuing = self._man.fails #checks the fail count
-        print(continuing,'this isthe fail count')
+        self._terminal_service.write_text(self._puzzle._man.parachute())
+        #print(self._puzzle._man.parachute())
+        continuing = self._puzzle._man.fails #checks the fail count
+        #print(continuing,'this isthe fail count')
         if continuing == 4:
              self._is_playing = False
-             print(self._is_playing,'this should say false')
-             return self._is_playing
+             self._terminal_service.write_text(f"The word is {self._puzzle.get_word()}")
+             #print(self._is_playing,'this should say false')
+             #return self._is_playing
          
         else:
             
-            if self._puzzle == self._man._winning_word:
-                print('Congratulations YOU WIN!!!')
+            if self._puzzle.is_winner():
+                self._terminal_service.write_text('Congratulations YOU WIN!!!')
+                self._terminal_service.write_text(f"The word is {self._puzzle.get_word()}")
                 self._is_playing = False
-                return self._is_playing
+                #return self._is_playing
             else:   
-                
                 self._is_playing = True
-                print('this should be true', self._is_playing)
-                return self._is_playing
+                #print('this should be true', self._is_playing)
+                #return self._is_playing
         
-    
-    
-    
-    
-
-    
-
-
-
-
 # if __name__ == "__main__":   
 
 #     d = Director()
