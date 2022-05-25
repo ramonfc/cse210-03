@@ -42,7 +42,7 @@ class Director:
         self._terminal_service.write_text(self._puzzle._man.parachute()) #shows the parachute
         
         self._terminal_service.write_text("") #add newline that is blank
-        self._user_letter= self._terminal_service.validateInput("Guess a letter [a-z]: ", "[a-z]") #gets user's letter 
+        self._user_letter= self._terminal_service.validateInput("Guess a letter [a-z]: ", "^[a-z]{1}$") #gets user's letter 
         self._terminal_service.write_text(f"your input: {self._user_letter}") #displays the user's letter
                 
     def updates(self):
