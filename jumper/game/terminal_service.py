@@ -51,7 +51,6 @@ class TerminalService:
         expected_range (str): regular expression corresponding to possible right options
         
         """
-        # message = message.lower()
         user_input = input(message)
         user_input = user_input.lower()
         
