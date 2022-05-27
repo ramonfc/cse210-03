@@ -20,9 +20,9 @@ class Puzzle:
         Args:
             self (Puzzle): an instance of Puzzle.
         """
-        self._word_list = ["mango", "house", "programming", "computer"]
-        self._word = random.choice(self._word_list)
-        self._blank_puzzle = ["_"] * len(self._word)
+        self.__word_list = ["mango", "house", "programming", "computer"]
+        self.__word = random.choice(self.__word_list)
+        self._blank_puzzle = ["_"] * len(self.__word)
         self._is_in_puzzle = False
         self._man = Man() #add the man in the puzzle and remove it from the director
     
@@ -41,7 +41,7 @@ class Puzzle:
             self (Puzzle): an instance of Puzzle.
         """
         #self._word = random.choice(self._word_list) #add this in the initiation instead so tha we could call get_word without changing the word
-        return self._word
+        return self.__word
 
     def check_guess(self, letter):
         """Check the guess of the player and update is_in_puzzle, blank_puzzle and man.fails when needed.
@@ -51,8 +51,8 @@ class Puzzle:
             letter (str): input from user
         """
         self._is_in_puzzle = False
-        for i in range(len(self._word)):
-            if letter == self._word[i]:
+        for i in range(len(self.__word)):
+            if letter == self.__word[i]:
                 self._blank_puzzle[i] = letter
                 self._is_in_puzzle = True
         if self._is_in_puzzle != True:

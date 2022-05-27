@@ -58,7 +58,7 @@ class Director:
              self._terminal_service.write_text(f"The word is {self._puzzle.get_word()}")
              #print(self._is_playing,'this should say false')
              #return self._is_playing
-         
+             
         else:
             
             if self._puzzle.is_winner():
